@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeCode ReChat</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="screen">
+            <div class="screen-header">
+                <div class="logo">DeCode ReChat</div>
+                <div id="roomCodeDisplay" class="room-code-display hidden">
+                    <span>CODE: <span id="roomCodeText"></span></span>
+                    <button class="copy-btn" onclick="copyRoomCode()">COPY</button>
+                </div>
+            </div>
+            
+            <div class="screen-body">
+                <!-- Welcome Screen -->
+                <div id="welcomeScreen" class="welcome-screen">
+                    <div class="title">WELCOME USER</div>
+                    <div class="subtitle">// PEER TO PEER //</div>
+                    <div class="button-group">
+                        <button class="btn" onclick="showCreateScreen()">CREATE</button>
+                        <button class="btn secondary" onclick="showJoinScreen()">JOIN</button>
+                    </div>
+                </div>
+                
+                <!-- Create Room Screen -->
+                <div id="createScreen" class="form-screen hidden">
+                    <button class="back-btn" onclick="showWelcomeScreen()">MENU</button>
+                    <div class="form-title">CREATE YOUR ROOM</div>
+                    <div class="input-group">
+                        <label class="input-label">ENTER USERNAME</label>
+                        <input type="text" class="input-field" id="createUsername" placeholder="ENTRY">
+                    </div>
+                    <button class="btn" onclick="createRoom()" style="width: 100%;">INITALIZE ROOM</button>
+                    <div id="createStatus" class="status-text hidden"></div>
+                </div>
+                
+                <!-- Join Room Screen -->
+                <div id="joinScreen" class="form-screen hidden">
+                    <button class="back-btn" onclick="showWelcomeScreen()">BACK</button>
+                    <div class="form-title">JOIN ROOM</div>
+                    <div class="input-group">
+                        <label class="input-label">USERNAME</label>
+                        <input type="text" class="input-field" id="joinUsername" placeholder="Enter your username...">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">ROOM CODE</label>
+                        <input type="text" class="input-field" id="joinRoomCode" placeholder="Enter room code...">
+                    </div>
+                    <button class="btn secondary" onclick="joinRoom()" style="width: 100%;">CONNECT</button>
+                    <div id="joinStatus" class="status-text hidden"></div>
+                </div>
+                
+                <!-- Chat Screen -->
+                <div id="chatScreen" class="chat-container hidden">
+                    <div class="chat-messages" id="chatMessages"></div>
+                    <div class="chat-input-container">
+                        <input type="text" class="chat-input" id="chatInput" placeholder="Type your message...">
+                        <button class="send-btn" onclick="sendMessage()">SEND</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
